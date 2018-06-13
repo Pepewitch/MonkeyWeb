@@ -197,7 +197,7 @@ export class Class {
         const statement =
             `SELECT Class.ClassName, Class.ClassDate, Class.ClassDescription, Class.TutorID, Class.RoomID, Class.Grade, Class.ClassTimes, Class.ClassType, Users.FirstnameEn, Users.LastnameEn, Users.NicknameEn
             FROM Class
-                JOIN Users ON Users.ID = Class.TutorID
+                LEFT JOIN Users ON Users.ID = Class.TutorID
             WHERE Class.ID = :ID`;
         return Connection.getInstance().query<ClassInfo>(statement, {
             raw: true,
